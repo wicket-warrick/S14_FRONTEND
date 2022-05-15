@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useState, useEffect } from "react";
+import "./App.css";
+import { List } from "./components/listTask";
+import { FormTask } from "./components/formTask/indexFormTask";
+import { exampleTaskList } from "./data/exampleTaskList";
 function App() {
+  const memory = JSON.parse(localStorage.getItem("tasklist"));
+
+  const [taskList, setTaskList] = useState(memory || exampleTaskList);
+  useEffect(() => {
+    localStorage.setItem("tasklist", JSON.stringify(taskList));
+  }, [taskList]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <>
+      <header>
+        <h1>Task List React Example</h1>
       </header>
-    </div>
+      <main>
+        <List content={taskList} handlerTaskList={setTaskList} />
+        <FormTask content={taskList} handler={setTaskList} />
+      </main>
+      <footer>
+        <h4>HACK A BOSS @HugoSuarez 2022</h4>
+      </footer>
+    </>
   );
 }
 
