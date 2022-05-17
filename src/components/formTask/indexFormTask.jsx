@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { propTypes } from "prop-types";
 export const FormTask = ({ content, handler }) => {
   const [descriptionTask, setDescriptionTask] = useState("");
 
@@ -34,4 +34,9 @@ export const FormTask = ({ content, handler }) => {
       <input type="submit" value="añadir"></input>
     </form>
   );
+};
+
+FormTask.propTypes = {
+  content: propTypes.array.isRequired,
+  handler: propTypes.func.isRequired,
 };

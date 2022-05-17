@@ -7,6 +7,6 @@ export const exampleTaskList = [
   {
     id: 2,
     task: "Hacer ejercicios de react",
-    done: false,
+    done: true,
   },
 ];

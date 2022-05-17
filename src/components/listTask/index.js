@@ -1,4 +1,5 @@
 import { Task } from "../task/indexTask";
+import { propTypes } from "prop-types";
 
 export const List = ({ content, handlerTaskList }) => {
   return (
@@ -14,4 +15,9 @@ export const List = ({ content, handlerTaskList }) => {
       ))}
     </ul>
   );
+};
+
+List.propTypes = {
+  content: propTypes.array.isRequired,
+  handlerTaskList: propTypes.func.isRequired,
 };

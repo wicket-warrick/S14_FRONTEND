@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { propTypes } from "prop-types";
 
 export const Task = ({ task, handlerTask, content, index }) => {
   const [check, setCheck] = useState(task.done);
@@ -16,4 +17,11 @@ export const Task = ({ task, handlerTask, content, index }) => {
       <input type="checkbox" checked={check} onChange={handlerCheckBox}></input>
     </li>
   );
+};
+
+Task.propTypes = {
+  task: propTypes.object.isRequired,
+  handlerTask: propTypes.func.isRequired,
+  content: propTypes.string.isRequired,
+  index: propTypes.number.isRequired,
 };
